@@ -1,9 +1,9 @@
 import { Routes, Route } from "react-router-dom";
 
-import Login from "./pages/login";
+import Login from "./pages/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
-import AdminGovernance from "./pages/admin/governance";
-import EmployeeApproval from "./pages/employee/emp_approval";
+import AdminGovernance from "./pages/admin/Governance";
+import EmployeeApproval from "./pages/employee/EmpApproval";
 
 function App() {
   return (
@@ -22,7 +22,7 @@ function App() {
       />
 
       <Route
-        path="/employee/emp_approval"
+        path="/employee/empApproval"
         element={
           <ProtectedRoute role="employee">
             <EmployeeApproval />
