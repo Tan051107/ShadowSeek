@@ -3,7 +3,12 @@ import { Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
 import AdminGovernance from "./pages/admin/Governance";
+import AiToolCatalog from "./pages/admin/AiToolCatalog";
+import AdminApproval from "./pages/admin/AdminApproval";
+import AuditLogs from "./pages/admin/AuditLogs";
+import ChatbotManagement from "./pages/admin/ChatbotManagement";
 import EmployeeApproval from "./pages/employee/EmpApproval";
+import Chatbot from "./pages/employee/Chatbot";
 
 function App() {
   return (
@@ -22,10 +27,55 @@ function App() {
       />
 
       <Route
-        path="/employee/empApproval"
+        path="/admin/ai-tool-catalog"
+        element={
+          <ProtectedRoute role="admin">
+            <AiToolCatalog />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/admin/approvals"
+        element={
+          <ProtectedRoute role="admin">
+            <AdminApproval />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/admin/audit-logs"
+        element={
+          <ProtectedRoute role="admin">
+            <AuditLogs />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/admin/chatbot-management"
+        element={
+          <ProtectedRoute role="admin">
+            <ChatbotManagement />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/employee/approval"
         element={
           <ProtectedRoute role="employee">
             <EmployeeApproval />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/employee/chatbot"
+        element={
+          <ProtectedRoute role="employee">
+            <Chatbot />
           </ProtectedRoute>
         }
       />
