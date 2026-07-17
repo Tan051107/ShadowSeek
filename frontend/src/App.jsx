@@ -1,3 +1,9 @@
+import { Routes, Route } from "react-router-dom";
+
+import Login from "./pages/Login";
+import ProtectedRoute from "./components/ProtectedRoute";
+import AdminGovernance from "./pages/admin/Governance";
+import EmployeeApproval from "./pages/employee/EmpApproval";
 import { BrowserRouter,Routes,Route } from "react-router-dom";
 import './App.css'
 import MockAIChat from "./MockAIChat";
@@ -6,6 +12,30 @@ import ExecutiveDashboard from "./ExecutiveDashboard";
 
 function App() {
   return (
+    <Routes>
+      {/* Public Route */}
+      <Route path="/" element={<Login />} />
+
+      {/* Protected Routes */}
+      <Route
+        path="/admin/governance"
+        element={
+          <ProtectedRoute role="admin">
+            <AdminGovernance />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/employee/empApproval"
+        element={
+          <ProtectedRoute role="employee">
+            <EmployeeApproval />
+          </ProtectedRoute>
+        }
+      />
+    </Routes>
+  );
     <BrowserRouter>
       <Routes>
         <Route
@@ -25,4 +55,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
