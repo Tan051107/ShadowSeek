@@ -1,14 +1,12 @@
-import { Routes, Route } from "react-router-dom";
-
+import { BrowserRouter,Routes,Route } from "react-router-dom";
 import Login from "./pages/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
 import AdminGovernance from "./pages/admin/Governance";
 import EmployeeApproval from "./pages/employee/EmpApproval";
-import { BrowserRouter,Routes,Route } from "react-router-dom";
 import './App.css'
-import MockAIChat from "./MockAIChat";
-import CompanyAIChat from "./CompanyAIChat";
-import ExecutiveDashboard from "./ExecutiveDashboard";
+import MockAIChat from "./pages/mock-ai-models/MockAIChat";
+import CompanyAIChat from "./pages/mock-ai-models/CompanyAIChat";
+import ExecutiveDashboard from "./pages/admin/ExecutiveDashboard";
 
 function App() {
   return (
@@ -34,25 +32,26 @@ function App() {
           </ProtectedRoute>
         }
       />
-    </Routes>
-  );
-    <BrowserRouter>
-      <Routes>
-        <Route
+
+      <Route
+        path="/admin/dashboard"
+        element={
+          <ProtectedRoute role="admin">
+            <ExecutiveDashboard/>
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
           path="/ai-chat"
           element={<MockAIChat/>}
-        />
-        <Route
+      />
+      <Route
           path="/company-ai"
           element={<CompanyAIChat/>}
-        />
-        <Route
-          path="/dashboard"
-          element={<ExecutiveDashboard/>}
-        />
-      </Routes>
-    </BrowserRouter>
-  )
+      />
+    </Routes>
+  );
 }
 
 export default App;
