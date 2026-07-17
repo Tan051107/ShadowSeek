@@ -6,9 +6,12 @@ import AdminGovernance from "./pages/admin/Governance";
 import AiToolCatalog from "./pages/admin/AiToolCatalog";
 import AdminApproval from "./pages/admin/AdminApproval";
 import AuditLogs from "./pages/admin/AuditLogs";
-import ChatbotManagement from "./pages/admin/ChatbotManagement";
 import EmployeeApproval from "./pages/employee/EmpApproval";
-import Chatbot from "./pages/employee/Chatbot";
+
+// Restored Features
+import { PolicyManagement as AiPolicies } from "./features/AiPolicies/AiPolicies";
+import { EmployeeChat as AiAssistant } from "./features/AiAssistant/AiAssistant";
+import { DocumentScanner as DocScanner } from "./features/DocScanner/DocScanner";
 
 function App() {
   return (
@@ -54,10 +57,10 @@ function App() {
       />
 
       <Route
-        path="/admin/chatbot-management"
+        path="/admin/policies"
         element={
           <ProtectedRoute role="admin">
-            <ChatbotManagement />
+            <AiPolicies />
           </ProtectedRoute>
         }
       />
@@ -72,10 +75,19 @@ function App() {
       />
 
       <Route
-        path="/employee/chatbot"
+        path="/employee/chat"
         element={
           <ProtectedRoute role="employee">
-            <Chatbot />
+            <AiAssistant />
+          </ProtectedRoute>
+        }
+      />
+      
+      <Route
+        path="/employee/scanner"
+        element={
+          <ProtectedRoute role="employee">
+            <DocScanner />
           </ProtectedRoute>
         }
       />
