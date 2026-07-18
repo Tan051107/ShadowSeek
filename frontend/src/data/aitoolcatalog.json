@@ -1,0 +1,39 @@
+[
+  {
+    "id": "chatgpt-free",
+    "name": "ChatGPT Free",
+    "provider": "OpenAI",
+    "category": "General",
+    "riskScore": 82,
+    "riskLevel": "HIGH",
+    "approved": false,
+    "labelSubtitle": "AI Tool Nutrition Label",
+    "riskFactors": [
+      "External data processing outside enterprise perimeter",
+      "Conversation history retention enabled by default"
+    ],
+    "unsafeToShare": ["Customer personal information", "Source code"],
+    "allowedUsage": ["General writing", "Brainstorming"],
+    "dataRetention": "May store conversations for service improvement",
+    "trainingUsage": "User data may be used for model training depending on settings",
+    "recommendedAlternative": { "name": "Company AI Assistant" }
+  },
+  {
+    "id": "claude-sonar",
+    "name": "Claude Pro",
+    "provider": "Anthropic",
+    "category": "Analysis",
+    "riskScore": 45,
+    "riskLevel": "MEDIUM",
+    "approved": true,
+    "labelSubtitle": "AI Tool Nutrition Label",
+    "riskFactors": [
+      "Data shared with third-party sub-processors"
+    ],
+    "unsafeToShare": ["Financial records"],
+    "allowedUsage": ["Data analysis", "Code generation"],
+    "dataRetention": "Deleted after 30 days",
+    "trainingUsage": "Data is not used for model training",
+    "recommendedAlternative": { "name": "Enterprise Claude Link" }
+  }
+]
