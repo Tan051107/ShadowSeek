@@ -49,7 +49,7 @@ function SideNavigationBar({ role = "admin" }) {
   const navigation = isAdmin ? adminNavigation : employeeNavigation;
 
   return (
-    <aside className="flex h-screen w-72 flex-col border-r border-slate-200 bg-slate-950 text-slate-100">
+    <aside className="flex h-screen sticky top-0 w-72 flex-col border-r border-slate-200 bg-slate-950 text-slate-100">
       <div className="flex items-center gap-3 border-b border-white/10 px-6 py-6">
         <img
           src={logo}
