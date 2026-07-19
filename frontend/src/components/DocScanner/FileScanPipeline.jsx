@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Card, CardContent } from '../../../components/common/Card';
+import { Card, CardContent } from '../common/Card';
 import { Loader2, CheckCircle2 } from 'lucide-react';
 
 const STEPS = [

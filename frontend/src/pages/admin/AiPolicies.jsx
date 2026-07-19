@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import SideNavigationBar from "../../components/SideNavigationBar";
 import { Plus } from 'lucide-react';
-import { PolicyTable } from './components/PolicyTable';
-import { PolicyModal } from './components/PolicyModal';
-import { DeleteModal } from './components/DeleteModal';
+import { PolicyTable } from '../../components/AiPolicies/PolicyTable';
+import { PolicyModal } from '../../components/AiPolicies/PolicyModal';
+import { DeleteModal } from '../../components/AiPolicies/DeleteModal';
 import { Button } from '../../components/common/Button';
-import initialPolicies from '../GovernanceCore/data/policies';
-import policyAnalysis from '../GovernanceCore/data/policyAnalysis';
+import initialPolicies from '../../data/policies.json';
+import policyAnalysis from '../../data/policyAnalysis.json';
 import { Card, CardHeader, CardTitle, CardContent } from '../../components/common/Card';
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 

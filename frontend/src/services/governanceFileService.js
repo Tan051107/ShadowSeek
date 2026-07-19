@@ -1,4 +1,4 @@
-import policies from '../data/policies';
+import policies from '../data/policies.json';
 import { sanitizeText } from '../utils/sanitizer';
 
 function generateMockContent(filename) {

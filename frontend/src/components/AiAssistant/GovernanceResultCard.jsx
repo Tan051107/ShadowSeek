@@ -1,7 +1,7 @@
 import { ShieldCheck, AlertTriangle, XCircle, Copy, RefreshCw } from "lucide-react";
-import { Card, CardContent } from "../../../components/common/Card";
-import { Button } from "../../../components/common/Button";
-import { Badge } from "../../../components/common/Badge";
+import { Card, CardContent } from "../common/Card";
+import { Button } from "../common/Button";
+import { Badge } from "../common/Badge";
 
 export function GovernanceResultCard({ result, originalPrompt, suggestedPrompt }) {
   if (result.safe) {

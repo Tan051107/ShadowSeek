@@ -1,6 +1,6 @@
 import { ShieldCheck, AlertTriangle, XCircle, Check } from 'lucide-react';
-import { Card, CardContent } from '../../../components/common/Card';
-import { Badge } from '../../../components/common/Badge';
+import { Card, CardContent } from '../common/Card';
+import { Badge } from '../common/Badge';
 
 export function DocumentResult({ result }) {
   if (!result) return null;

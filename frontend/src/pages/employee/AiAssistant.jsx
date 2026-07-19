@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import SideNavigationBar from "../../components/SideNavigationBar";
-import { GovernanceResultCard } from './components/GovernanceResultCard';
-import { checkPrompt } from '../GovernanceCore/utils/promptChecker';
-import { generateSuggestion } from '../GovernanceCore/utils/generateSuggestion';
+import { GovernanceResultCard } from '../../components/AiAssistant/GovernanceResultCard';
+import { checkPrompt } from '../../utils/promptChecker';
+import { generateSuggestion } from '../../utils/generateSuggestion';
 import { Button } from '../../components/common/Button';
 import { Search, Loader2 } from 'lucide-react';
 

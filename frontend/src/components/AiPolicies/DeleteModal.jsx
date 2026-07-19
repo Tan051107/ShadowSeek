@@ -1,5 +1,5 @@
-import { Modal } from "../../../components/common/Modal";
-import { Button } from "../../../components/common/Button";
+import { Modal } from "../common/Modal";
+import { Button } from "../common/Button";
 import { AlertTriangle } from "lucide-react";
 
 export function DeleteModal({ isOpen, onClose, onConfirm, policyName }) {

@@ -1,6 +1,6 @@
 import { Download } from 'lucide-react';
-import { Card, CardContent } from '../../../components/common/Card';
-import { Button } from '../../../components/common/Button';
+import { Card, CardContent } from '../common/Card';
+import { Button } from '../common/Button';
 
 export function DownloadCard({ originalFilename, sanitizedContent }) {
   

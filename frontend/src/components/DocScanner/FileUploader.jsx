@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { UploadCloud } from 'lucide-react';
-import { Card, CardContent } from '../../../components/common/Card';
+import { Card, CardContent } from '../common/Card';
 
 export function FileUploader({ onUpload }) {
   const [isDragging, setIsDragging] = useState(false);

@@ -9,9 +9,9 @@ import {
   AlertTriangle,
   Info
 } from "lucide-react";
-import { Modal } from "../../../components/common/Modal";
-import { Button } from "../../../components/common/Button";
-import { Badge } from "../../../components/common/Badge";
+import { Modal } from "../common/Modal";
+import { Button } from "../common/Button";
+import { Badge } from "../common/Badge";
 
 const categories = [
   { value: "Privacy", icon: Shield, color: "text-blue-600 bg-blue-100 border-blue-200" },

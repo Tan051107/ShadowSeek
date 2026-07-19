@@ -1,4 +1,4 @@
-import { Card, CardContent } from '../../../components/common/Card';
+import { Card, CardContent } from '../common/Card';
 
 export function DocumentComparison({ originalContent, sanitizedContent }) {
   return (

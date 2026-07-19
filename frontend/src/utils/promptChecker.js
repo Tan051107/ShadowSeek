@@ -1,4 +1,4 @@
-import policies from "../data/policies";
+import policies from "../data/policies.json";
 
 export function checkPrompt(prompt) {
   if (!prompt || prompt.trim() === "") return { safe: true };

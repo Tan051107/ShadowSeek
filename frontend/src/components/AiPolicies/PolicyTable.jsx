@@ -1,5 +1,5 @@
 import { Edit2, Trash2 } from "lucide-react";
-import { Badge } from "../../../components/common/Badge";
+import { Badge } from "../common/Badge";
 
 export function PolicyTable({ policies, onEdit, onDelete }) {
   const getSeverityVariant = (severity) => {

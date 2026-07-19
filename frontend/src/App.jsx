@@ -7,11 +7,9 @@ import AiToolCatalog from "./pages/admin/AiToolCatalog";
 import AdminApproval from "./pages/admin/AdminApproval";
 import AuditLogs from "./pages/admin/AuditLogs";
 import EmployeeApproval from "./pages/employee/EmpApproval";
-
-// Restored Features
-import { PolicyManagement as AiPolicies } from "./features/AiPolicies/AiPolicies";
-import { EmployeeChat as AiAssistant } from "./features/AiAssistant/AiAssistant";
-import { DocumentScanner as DocScanner } from "./features/DocScanner/DocScanner";
+import { PolicyManagement as AiPolicies } from "./pages/admin/AiPolicies";
+import { EmployeeChat as AiAssistant } from "./pages/employee/AiAssistant";
+import { DocumentScanner as DocScanner } from "./pages/employee/DocScanner";
 
 function App() {
   return (
@@ -82,7 +80,7 @@ function App() {
           </ProtectedRoute>
         }
       />
-      
+
       <Route
         path="/employee/scanner"
         element={

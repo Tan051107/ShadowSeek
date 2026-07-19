@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import SideNavigationBar from "../../components/SideNavigationBar";
-import { FileUploader } from './components/FileUploader';
-import { FileScanPipeline } from './components/FileScanPipeline';
-import { DocumentResult } from './components/DocumentResult';
-import { DocumentComparison } from './components/DocumentComparison';
-import { DownloadCard } from './components/DownloadCard';
-import { scanDocument } from '../GovernanceCore/services/governanceFileService';
+import { FileUploader } from '../../components/DocScanner/FileUploader';
+import { FileScanPipeline } from '../../components/DocScanner/FileScanPipeline';
+import { DocumentResult } from '../../components/DocScanner/DocumentResult';
+import { DocumentComparison } from '../../components/DocScanner/DocumentComparison';
+import { DownloadCard } from '../../components/DocScanner/DownloadCard';
+import { scanDocument } from '../../services/governanceFileService';
 import { FileText } from 'lucide-react';
 
 export function DocumentScanner() {
