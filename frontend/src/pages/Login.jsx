@@ -31,7 +31,7 @@ function Login() {
                 break;
 
             case "employee":
-                navigate("/employee/empApproval");
+                navigate("/employee/approval");
                 break;
 
             default:

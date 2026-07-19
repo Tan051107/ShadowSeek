@@ -1,6 +1,11 @@
-// frontend/src/pages/admin/governance.jsx
+import SideNavigationBar from "../../components/SideNavigationBar";
+
 function Governance() {
-  return <h1>Governance Page</h1>;
+  return (
+    <div className="flex min-h-screen bg-slate-50">
+      <SideNavigationBar role="admin"/>
+    </div>
+  );
 }
 
 export default Governance;

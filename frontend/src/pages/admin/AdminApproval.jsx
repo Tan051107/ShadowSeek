@@ -1,11 +1,11 @@
 import SideNavigationBar from "../../components/SideNavigationBar";
 
-function EmployeeApproval() {
+function AdminApproval() {
   return (
     <div className="flex min-h-screen bg-slate-50">
-      <SideNavigationBar role="employee"/>
+      <SideNavigationBar role="admin"/>
     </div>
   );
 }
 
-export default EmployeeApproval;
+export default AdminApproval;
