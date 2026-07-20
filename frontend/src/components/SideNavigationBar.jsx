@@ -9,15 +9,11 @@ import {
   RiChatSettingsFill,
   RiSettings3Line,
   RiRobot2Line,
-  RiFileSearchLine
+  RiFileSearchLine,
+  RiDashboardLine
 } from "react-icons/ri";
 
 const adminNavigation = [
-  {
-    name: "Dashboard",
-    href: "/admin/dashboard",
-    icon: <RiDashboardLine className="h-5 w-5" />
-  },
   {
     name: "Governance",
     href: "/admin/governance",

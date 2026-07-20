@@ -27,7 +27,7 @@ function Login() {
         switch(user.role){
 
             case "admin":
-                navigate("/admin/dashboard");
+                navigate("/admin/governance");
                 break;
 
             case "employee":

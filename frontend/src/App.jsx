@@ -1,7 +1,7 @@
 import { Routes,Route } from "react-router-dom";
 import Login from "./pages/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
-import AdminGovernance from "./pages/admin/Governance";
+import Governance from "./pages/admin/Governance"
 import AiToolCatalog from "./pages/admin/AiToolCatalog";
 import AdminApproval from "./pages/admin/AdminApproval";
 import AuditLogs from "./pages/admin/AuditLogs";
@@ -9,11 +9,9 @@ import EmployeeApproval from "./pages/employee/EmpApproval";
 import { PolicyManagement as AiPolicies } from "./pages/admin/AiPolicies";
 import { EmployeeChat as AiAssistant } from "./pages/employee/AiAssistant";
 import { DocumentScanner as DocScanner } from "./pages/employee/DocScanner";
-import Chatbot from "./pages/employee/Chatbot";
 import './App.css'
 import MockAIChat from "./pages/mock-ai-models/MockAIChat";
 import CompanyAIChat from "./pages/mock-ai-models/CompanyAIChat";
-import ExecutiveDashboard from "./pages/admin/ExecutiveDashboard";
 
 function App() {
   return (
@@ -26,7 +24,7 @@ function App() {
         path="/admin/governance"
         element={
           <ProtectedRoute role="admin">
-            <AdminGovernance />
+            <Governance/>
           </ProtectedRoute>
         }
       />
@@ -90,15 +88,6 @@ function App() {
         element={
           <ProtectedRoute role="employee">
             <DocScanner />
-          </ProtectedRoute>
-        }
-      />
-
-      <Route
-        path="/admin/dashboard"
-        element={
-          <ProtectedRoute role="admin">
-            <ExecutiveDashboard/>
           </ProtectedRoute>
         }
       />
