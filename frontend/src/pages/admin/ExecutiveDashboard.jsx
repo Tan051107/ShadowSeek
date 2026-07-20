@@ -35,7 +35,9 @@ function ScoreBadge({ score }) {
 
 export default function ExecutiveDashboard() {
   return (
-    <main className="min-h-screen bg-slate-50 px-4 py-7 text-slate-900 sm:px-6 lg:px-10 lg:py-10">
+    <div className="flex min-h-screen bg-slate-50">
+      <SideNavigationBar role="admin" />
+      <main className="min-w-0 flex-1 bg-slate-50 px-4 py-7 text-slate-900 sm:px-6 lg:px-10 lg:py-10">
       <div className="mx-auto max-w-7xl">
         <header className="mb-8 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
           <div>
@@ -124,6 +126,8 @@ export default function ExecutiveDashboard() {
           </article>
         </section>
       </div>
-    </main>
+      </main>
+    </div>
   );
 }
+import SideNavigationBar from "../../components/SideNavigationBar";

@@ -1,9 +1,14 @@
 import { NavLink } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { LuSparkles } from "react-icons/lu";
-import { RiShieldCheckLine,RiSearch2Line,RiTodoLine,RiListIndefinite,RiChatSettingsFill } from "react-icons/ri";
+import { RiDashboardLine,RiShieldCheckLine,RiSearch2Line,RiTodoLine,RiListIndefinite,RiChatSettingsFill } from "react-icons/ri";
 
 const adminNavigation = [
+  {
+    name: "Dashboard",
+    href: "/admin/dashboard",
+    icon: <RiDashboardLine className="h-5 w-5" />
+  },
   {
     name: "Governance",
     href: "/admin/governance",
