@@ -2,21 +2,34 @@ import { useState } from 'react';
 import SideNavigationBar from "../../components/SideNavigationBar";
 
 function AdminApproval() {
-  // 1. Initialize table data
+  // Initialize table data
   const [requests, setRequests] = useState([
-    { id: 'REQ-1042', name: 'John Tan', initials: 'JT', tool: 'Claude Free', risk: 'MEDIUM', purpose: 'Generate customer email drafts', status: 'Pending' },
-    { id: 'REQ-1041', name: 'Sarah Lim', initials: 'SL', tool: 'ChatGPT Free', risk: 'HIGH', purpose: 'Data Analysis of campaign performance', status: 'Pending' },
-    { id: 'REQ-1040', name: 'Amir Rahman', initials: 'AR', tool: 'Perplexity', risk: 'MEDIUM', purpose: 'Market research summaries', status: 'Pending' },
-    { id: 'REQ-1039', name: 'Priya Nair', initials: 'PN', tool: 'Company AI Assistant', risk: 'LOW', purpose: 'Draft internal policy docs', status: 'Approved' },
-    { id: 'REQ-1038', name: 'Marcus Wei', initials: 'MW', tool: 'Gemini', risk: 'MEDIUM', purpose: 'Translate marketing copy', status: 'Denied' },
+    { id: 'REQ-1042', name: 'John Tan', initials: 'JT', department: 'Sales', tool: 'Claude Free', risk: 'MEDIUM', purpose: 'Generate customer email drafts', status: 'Pending' },
+    { id: 'REQ-1041', name: 'Sarah Lim', initials: 'SL', department: 'Marketing', tool: 'ChatGPT Free', risk: 'HIGH', purpose: 'Data Analysis of campaign performance', status: 'Pending' },
+    { id: 'REQ-1040', name: 'Amir Rahman', initials: 'AR', department: 'Research', tool: 'Perplexity', risk: 'LOW', purpose: 'Market research summaries', status: 'Pending' },
+    { id: 'REQ-1039', name: 'Priya Nair', initials: 'PN', department: 'HR', tool: 'Company AI Assistant', risk: 'LOW', purpose: 'Draft internal policy docs', status: 'Approved' },
+    { id: 'REQ-1038', name: 'Marcus Wei', initials: 'MW', department: 'Marketing', tool: 'Gemini', risk: 'MEDIUM', purpose: 'Translate marketing copy', status: 'Denied' },
   ]);
 
-  // 2. Define the function to handle approval actions
+  // Define the function to handle approval actions
   const handleAction = (id, newStatus) => {
     setRequests(requests.map(req => 
       req.id === id ? { ...req, status: newStatus } : req
     ));
   };
+
+  // Define the function to batch approve ALL low risk pending requests
+  const handleApproveLowRisk = () => {
+    setRequests(requests.map(req => 
+      (req.risk === 'LOW' && req.status === 'Pending') 
+        ? { ...req, status: 'Approved' } 
+        : req
+    ));
+  };
+
+  // Calculate the counts of pending and resolved
+  const pendingCount = requests.filter(req => req.status === 'Pending').length;
+  const resolvedCount = requests.filter(req => req.status !== 'Pending').length;
 
   // Return the corresponding risk level
   const getRiskStyle = (risk) => {
@@ -58,7 +71,7 @@ function AdminApproval() {
         <div className="bg-white border-b border-gray-200 px-8 py-6 flex justify-between items-center shrink-0">
           <div>
             <h1 className="text-2xl font-bold text-gray-900">Access Approvals</h1>
-            <p className="text-gray-500 text-sm mt-1">Request access to new AI tools and review pending decisions.</p>
+            <p className="text-gray-500 text-sm mt-1">Review pending decisions and resolved requests.</p>
           </div>
           <div className="avatar bg-blue-100 text-blue-800 rounded-full h-10 w-10 flex items-center justify-center font-bold">
             JT
@@ -79,12 +92,16 @@ function AdminApproval() {
                     </svg>
                   </span> 
                   Admin Approval Queue
-                </h2>
-                <p className="text-sm text-gray-500 mt-1">3 pending · 1 approved</p>
+              </h2>
+                <p className="text-sm text-gray-500 mt-1">{pendingCount} pending · {resolvedCount} resolved</p>
               </div>
-              <span className="bg-orange-100 text-orange-800 text-xs font-medium px-2.5 py-1 rounded-md">
-                Requires attention
-              </span>
+              
+              <button 
+                onClick={handleApproveLowRisk}
+                className="bg-emerald-100 hover:bg-emerald-200 text-emerald-800 text-sm font-medium px-4 py-2 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-emerald-500 shadow-sm"
+              >
+                Approve Low Risk
+              </button>
             </div>
 
             {/* Table */}
@@ -93,6 +110,7 @@ function AdminApproval() {
                 <thead className="text-xs text-gray-500 uppercase bg-gray-100 border-b border-gray-200">
                   <tr>
                     <th scope="col" className="px-4 py-4 font-medium">Employee</th>
+                    <th scope="col" className="px-4 py-4 font-medium">Department</th>
                     <th scope="col" className="px-4 py-4 font-medium">Tool</th>
                     <th scope="col" className="px-4 py-4 font-medium">Risk</th>
                     <th scope="col" className="px-4 py-4 font-medium">Purpose</th>
@@ -112,6 +130,11 @@ function AdminApproval() {
                           <div className="font-medium text-gray-900">{request.name}</div>
                           <div className="text-xs text-gray-400">{request.id}</div>
                         </div>
+                      </td>
+
+                      {/* Department Column */}
+                      <td className="px-4 py-4 whitespace-nowrap text-gray-600">
+                        {request.department}
                       </td>
                       
                       {/* Tool Column */}
@@ -182,7 +205,6 @@ function AdminApproval() {
                 </tbody>
               </table>
             </div>
-
           </div>
         </div>
       </div>
