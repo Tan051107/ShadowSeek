@@ -15,7 +15,7 @@
     {
       "id": "nova-ai",
       "toolName": "Nova AI",
-      "provider": "ShadowSeek Demo",
+      "provider": "OpenGPT",
       "labelTitle": "AI Tool Nutrition Label",
       "icon": "sparkles",
       "riskLevel": "HIGH",
