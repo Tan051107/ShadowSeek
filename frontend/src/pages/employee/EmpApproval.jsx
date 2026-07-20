@@ -48,6 +48,32 @@ function EmployeeApproval() {
     });
   }
 
+  // Based on DataType return suggestion message
+  const getSuggestionMessage = (dataType) => {
+    switch (dataType) {
+      case 'Marketing information':
+        return (
+          <>Suggested alternative: <strong className="font-bold">Company AI Assistant</strong> can handle marketing drafts with lower risk.</>
+        );
+      case 'Public information':
+        return (
+          <>Suggested alternative: <strong className="font-bold">Approved Public LLMs</strong> are safe for public data, but ensure no PII is included.</>
+        );
+      case 'Internal (non-sensitive)':
+        return (
+          <>Suggested alternative: <strong className="font-bold">Enterprise Copilot</strong> is recommended for internal docs to maintain governance.</>
+        );
+      case 'Confidential':
+        return (
+          <>High Risk: For confidential data, strictly use the <strong className="font-bold">Secure Internal Sandbox</strong> to prevent data leaks.</>
+        );
+      default:
+        return (
+          <>Please select a data type to view safe AI alternatives.</>
+        );
+    }
+  };
+
   // Extract common input field styles
   const inputStyles = "w-full border border-gray-300 rounded-lg p-2.5 shadow-sm focus:outline-none focus:ring-1 focus:ring-[#1F6899] focus:border-[#1F6899] transition-all bg-white text-gray-900";
 
@@ -60,7 +86,7 @@ function EmployeeApproval() {
         <div className="bg-white border-b border-gray-200 px-8 py-6 flex justify-between items-center">
           <div>
             <h1 className="text-2xl font-bold text-gray-900">Access Approvals</h1>
-            <p className="text-gray-500 text-sm mt-1">Request access to new AI tools and review pending decisions.</p>
+            <p className="text-gray-500 text-sm mt-1">Request access to new AI tools.</p>
           </div>
           <div className="avatar bg-blue-100 text-blue-800 rounded-full h-10 w-10 flex items-center justify-center font-bold">
             JT
@@ -108,7 +134,6 @@ function EmployeeApproval() {
               </div>
 
             ) : (
-
 
             <form onSubmit={handleSubmit}>
             {/* AI Tool custom drop-down menu */}
@@ -218,12 +243,13 @@ function EmployeeApproval() {
                 ></textarea>
               </div>
 
+              {/* Suggestion Message */}
               <div className="bg-[#FFF4E5] border border-orange-200 text-black p-3 rounded-lg mb-6 flex items-start shadow-sm">
                 <svg className="w-5 h-5 text-orange-600 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
                 </svg>
                 <p className="text-sm leading-relaxed">
-                  Suggested alternative: <strong className="font-bold">Company AI Assistant</strong> can handle marketing drafts with lower risk.
+                  {getSuggestionMessage(formData.dataType)}
                 </p>
               </div>
 
@@ -234,7 +260,6 @@ function EmployeeApproval() {
                 Submit Request
               </button>
             </form>
-
             )}
           </div>
         </div>

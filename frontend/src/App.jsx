@@ -75,6 +75,15 @@ function App() {
       />
 
       <Route
+        path="/employee/ai-tool-catalog"
+        element={
+          <ProtectedRoute role="employee">
+            <AiToolCatalog role="employee" />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
         path="/employee/chat"
         element={
           <ProtectedRoute role="employee">
