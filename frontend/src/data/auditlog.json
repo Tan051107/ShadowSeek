@@ -1,0 +1,32 @@
+[
+  {
+    "id": "event-1",
+    "userName": "John Tan",
+    "userInitials": "JT",
+    "department": "Engineering",
+    "tool": "ChatGPT Free",
+    "riskLevel": "HIGH",
+    "action": "Requested Approval",
+    "timestamp": "10:32 AM"
+  },
+  {
+    "id": "event-2",
+    "userName": "Sarah Lim",
+    "userInitials": "SL",
+    "department": "Marketing",
+    "tool": "Claude Pro",
+    "riskLevel": "MEDIUM",
+    "action": "Continued Usage",
+    "timestamp": "11:45 AM"
+  },
+    {
+    "id": "event-3",
+    "userName": "Amelia Lim",
+    "userInitials": "AL",
+    "department": "Finance",
+    "tool": "Claude Free",
+    "riskLevel": "LOW",
+    "action": "Approved Session",
+    "timestamp": "12:55 AM"
+  }
+]

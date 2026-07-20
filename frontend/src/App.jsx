@@ -5,8 +5,10 @@ import AdminGovernance from "./pages/admin/Governance";
 import AiToolCatalog from "./pages/admin/AiToolCatalog";
 import AdminApproval from "./pages/admin/AdminApproval";
 import AuditLogs from "./pages/admin/AuditLogs";
-import ChatbotManagement from "./pages/admin/ChatbotManagement";
 import EmployeeApproval from "./pages/employee/EmpApproval";
+import { PolicyManagement as AiPolicies } from "./pages/admin/AiPolicies";
+import { EmployeeChat as AiAssistant } from "./pages/employee/AiAssistant";
+import { DocumentScanner as DocScanner } from "./pages/employee/DocScanner";
 import Chatbot from "./pages/employee/Chatbot";
 import './App.css'
 import MockAIChat from "./pages/mock-ai-models/MockAIChat";
@@ -57,10 +59,10 @@ function App() {
       />
 
       <Route
-        path="/admin/chatbot-management"
+        path="/admin/policies"
         element={
           <ProtectedRoute role="admin">
-            <ChatbotManagement />
+            <AiPolicies />
           </ProtectedRoute>
         }
       />
@@ -75,10 +77,19 @@ function App() {
       />
 
       <Route
-        path="/employee/chatbot"
+        path="/employee/chat"
         element={
           <ProtectedRoute role="employee">
-            <Chatbot />
+            <AiAssistant />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/employee/scanner"
+        element={
+          <ProtectedRoute role="employee">
+            <DocScanner />
           </ProtectedRoute>
         }
       />

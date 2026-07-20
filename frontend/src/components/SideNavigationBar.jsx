@@ -1,7 +1,16 @@
 import { NavLink } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { LuSparkles } from "react-icons/lu";
-import { RiDashboardLine,RiShieldCheckLine,RiSearch2Line,RiTodoLine,RiListIndefinite,RiChatSettingsFill } from "react-icons/ri";
+import { 
+  RiShieldCheckLine,
+  RiSearch2Line,
+  RiTodoLine,
+  RiListIndefinite,
+  RiChatSettingsFill,
+  RiSettings3Line,
+  RiRobot2Line,
+  RiFileSearchLine
+} from "react-icons/ri";
 
 const adminNavigation = [
   {
@@ -30,9 +39,9 @@ const adminNavigation = [
     icon: <RiListIndefinite className="h-5 w-5" />
   },
   {
-    name: "Chatbot Management",
-    href: "/admin/chatbot-management",
-    icon: <RiChatSettingsFill className="h-5 w-5" />
+    name: "Policies & Analytics",
+    href: "/admin/policies",
+    icon: <RiSettings3Line className="h-5 w-5" />
   }
 ];
 
@@ -43,9 +52,14 @@ const employeeNavigation = [
     icon: <RiTodoLine className="h-5 w-5" />
   },
   {
-    name: "Chatbot",
-    href: "/employee/chatbot",
-    icon: <RiChatSettingsFill className="h-5 w-5" />
+    name: "AI Governance Assistant",
+    href: "/employee/chat",
+    icon: <RiRobot2Line className="h-5 w-5" />
+  },
+  {
+    name: "Document Scanner",
+    href: "/employee/scanner",
+    icon: <RiFileSearchLine className="h-5 w-5" />
   }
 ];
 
@@ -54,7 +68,7 @@ function SideNavigationBar({ role = "admin" }) {
   const navigation = isAdmin ? adminNavigation : employeeNavigation;
 
   return (
-    <aside className="flex h-screen w-72 flex-col border-r border-slate-200 bg-slate-950 text-slate-100">
+    <aside className="flex h-screen sticky top-0 w-72 flex-col border-r border-slate-200 bg-slate-950 text-slate-100">
       <div className="flex items-center gap-3 border-b border-white/10 px-6 py-6">
         <img
           src={logo}
