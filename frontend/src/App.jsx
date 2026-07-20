@@ -1,122 +1,107 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
+import { Routes,Route } from "react-router-dom";
+import Login from "./pages/Login";
+import ProtectedRoute from "./components/ProtectedRoute";
+import Governance from "./pages/admin/Governance"
+import AiToolCatalog from "./pages/admin/AiToolCatalog";
+import AdminApproval from "./pages/admin/AdminApproval";
+import AuditLogs from "./pages/admin/AuditLogs";
+import EmployeeApproval from "./pages/employee/EmpApproval";
+import { PolicyManagement as AiPolicies } from "./pages/admin/AiPolicies";
+import { EmployeeChat as AiAssistant } from "./pages/employee/AiAssistant";
+import { DocumentScanner as DocScanner } from "./pages/employee/DocScanner";
 import './App.css'
+import MockAIChat from "./pages/mock-ai-models/MockAIChat";
+import CompanyAIChat from "./pages/mock-ai-models/CompanyAIChat";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <Routes>
+      {/* Public Route */}
+      <Route path="/" element={<Login />} />
 
-      <div className="ticks"></div>
+      {/* Protected Routes */}
+      <Route
+        path="/admin/governance"
+        element={
+          <ProtectedRoute role="admin">
+            <Governance/>
+          </ProtectedRoute>
+        }
+      />
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+      <Route
+        path="/admin/ai-tool-catalog"
+        element={
+          <ProtectedRoute role="admin">
+            <AiToolCatalog />
+          </ProtectedRoute>
+        }
+      />
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+      <Route
+        path="/admin/approvals"
+        element={
+          <ProtectedRoute role="admin">
+            <AdminApproval />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/admin/audit-logs"
+        element={
+          <ProtectedRoute role="admin">
+            <AuditLogs />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/admin/policies"
+        element={
+          <ProtectedRoute role="admin">
+            <AiPolicies />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/employee/approval"
+        element={
+          <ProtectedRoute role="employee">
+            <EmployeeApproval />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/employee/chat"
+        element={
+          <ProtectedRoute role="employee">
+            <AiAssistant />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/employee/scanner"
+        element={
+          <ProtectedRoute role="employee">
+            <DocScanner />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+          path="/ai-chat"
+          element={<MockAIChat/>}
+      />
+      <Route
+          path="/company-ai"
+          element={<CompanyAIChat/>}
+      />
+    </Routes>
+  );
 }
 
-export default App
+export default App;
