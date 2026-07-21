@@ -6,11 +6,11 @@ import {
   RiSearch2Line,
   RiTodoLine,
   RiListIndefinite,
-  RiChatSettingsFill,
+  
   RiSettings3Line,
   RiRobot2Line,
   RiFileSearchLine,
-  RiDashboardLine
+  
 } from "react-icons/ri";
 
 const adminNavigation = [
@@ -46,6 +46,11 @@ const employeeNavigation = [
     name: "Approvals",
     href: "/employee/approval",
     icon: <RiTodoLine className="h-5 w-5" />
+  },
+  {
+    name: "AI Tool Catalog",
+    href: "/employee/ai-tool-catalog",
+    icon: <RiSearch2Line className="h-5 w-5" />
   },
   {
     name: "AI Governance Assistant",

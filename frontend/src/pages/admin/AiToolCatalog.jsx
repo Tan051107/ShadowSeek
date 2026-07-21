@@ -6,7 +6,7 @@ import SideNavigationBar from "../../components/SideNavigationBar";
 import RiskCard from "../../components/admin/RiskCard"; 
 import toolsList from "../../data/aitoolcatalog.json";
 
-function AiToolCatalog() {
+function AiToolCatalog({ role = "admin" }) {
   const [search, setSearch] = useState("");
   const [activeTool, setActiveTool] = useState(null); // Tracks the tool open in the modal
 
@@ -18,7 +18,7 @@ function AiToolCatalog() {
 
   return (
     <div className="flex min-h-screen bg-slate-50">
-      <SideNavigationBar role="admin" />
+      <SideNavigationBar role={role} />
       <main className="flex-1">
         <div className="border border-slate-200 bg-white px-6 py-4 shadow-sm">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
@@ -52,6 +52,7 @@ function AiToolCatalog() {
               <RiskCard 
                 key={tool.id} 
                 tool={tool} 
+                role={role}
                 onViewLabel={() => setActiveTool(tool)} 
               />
             ))}
@@ -61,7 +62,11 @@ function AiToolCatalog() {
 
       {/* 4. Render the modal inside the dashboard layout when active */}
       {activeTool && (
-        <RiskLabelModal tool={activeTool} onClose={() => setActiveTool(null)} />
+        <RiskLabelModal
+          tool={activeTool}
+          role={role}
+          onClose={() => setActiveTool(null)}
+        />
       )}
     </div>
   );
@@ -75,7 +80,10 @@ import { LuSparkles,LuX, LuCircleX, LuShield, LuLock, LuCheckCheck, LuDatabase, 
 import { FiCheckCircle } from "react-icons/fi";
 import { HiArrowRight } from "react-icons/hi2";
 
-function RiskLabelModal({ tool, onClose }) {
+function RiskLabelModal({ tool, onClose, role = "admin" }) {
+  const showApprovalAction = !tool.approved;
+  const approvalActionLabel = role === "admin" ? "Approve" : "Request Approval";
+
   return (
     <div className="fixed inset-0 bg-black/40 backdrop-blur-xs flex items-center justify-center z-50 p-4">
       <div className="bg-white rounded-3xl w-full max-w-3xl max-h-[90vh] flex flex-col shadow-xl overflow-hidden">
@@ -170,8 +178,12 @@ function RiskLabelModal({ tool, onClose }) {
           </div>
         </div>
 
-        <div className="p-6 border-t border-gray-100 grid grid-cols-2 gap-3 bg-white">
-          <button className="bg-black text-white rounded-xl py-3 font-semibold text-sm hover:bg-blue-950">Request Approval</button>
+        <div className={`p-6 border-t border-gray-100 ${showApprovalAction ? "grid grid-cols-2" : "grid grid-cols-1"} gap-3 bg-white`}>
+          {showApprovalAction && (
+            <button className="bg-black text-white rounded-xl py-3 font-semibold text-sm hover:bg-blue-950">
+              {approvalActionLabel}
+            </button>
+          )}
           <button className="bg-slate-50 border border-slate-200 text-gray-800 rounded-xl py-3 font-semibold text-sm hover:bg-slate-100">View Policy</button>
         </div>
       </div>
