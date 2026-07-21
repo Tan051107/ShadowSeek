@@ -46,7 +46,7 @@ function detectSensitiveData(prompt) {
 
 function redactSensitiveContent(content) {
   return content
-    .replace(/\b\d{3}-?\d{2}-?\d{4}\b|\b\d{6}-?\d{2}-?\d{4}\b/g, "[NTATIONAL ID NUMBER")
+    .replace(/\b\d{3}-?\d{2}-?\d{4}\b|\b\d{6}-?\d{2}-?\d{4}\b/g, "[NATIONAL ID NUMBER]")
     .replace(/\b(?:\d[ -]*?){13,16}\b/g, "[CARD NUMBER]")
     .replace(/\b(Customer|Client)\s+(?:name\s*:?\s*)?([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)/g, "$1 [NAME]")
     .replace(/\b(confidential|password|api key)\s*[:=]?\s*\S+/gi, "$1 [REDACTED]")
@@ -75,13 +75,25 @@ function buildReply(prompt) {
     return "Here’s the short version: focus on the objective, list the key constraints, and finish with a clear next action.";
   }
 
-  if (normalized.includes("brainstorm") || normalized.includes("idea")) {
+  if (normalized.includes("brainstorm")) {
     return "A few starting ideas: create a quick prototype, collect feedback from a small group, and use what you learn to prioritize the next iteration.";
   }
 
   if (normalized.includes("draft") || normalized.includes("write")) {
     return "Draft: “Thanks for sharing the context. I’ll review the details and come back with a concise recommendation and next steps.”";
   }
+
+if (normalized.includes("give me ideas for improving team productivity")) {
+  return "Here are several ways to improve team productivity:\n\n" +
+    "1. Set clear goals and priorities – Make sure everyone understands what needs to be accomplished and which tasks are most important.\n\n" +
+    "2. Improve communication – Use clear communication channels and avoid unnecessary meetings.\n\n" +
+    "3. Break large tasks into smaller steps – Smaller, manageable tasks make progress easier to track.\n\n" +
+    "4. Use project management tools – Tools such as task boards and shared calendars can help track responsibilities and deadlines.\n\n" +
+    "5. Reduce unnecessary meetings – Only hold meetings when discussion or collaboration is genuinely needed.\n\n" +
+    "6. Encourage collaboration – Create an environment where team members can share ideas, ask questions, and support each other.\n\n" +
+    "7. Review progress regularly – Short check-ins can help identify problems early.\n\n" +
+    "Overall, teams can improve productivity through clear priorities, effective communication, good organization, and regular feedback.";
+}
 
   return `I received “${prompt.trim()}”. This is a local scripted response, so no message is sent to an AI service.`;
 }
@@ -316,6 +328,13 @@ export default function MockAIChat({ company = false }) {
     return () => window.clearTimeout(assessmentTimer);
   }, [draft, assessedDraft]);
 
+  useEffect(() => {
+    if (!actionNotice) return undefined;
+
+    const noticeTimer = window.setTimeout(() => setActionNotice(""), 3000);
+    return () => window.clearTimeout(noticeTimer);
+  }, [actionNotice]);
+
   function handlePaste(event) {
     const input = event.currentTarget;
     window.setTimeout(() => setAssessedDraft(input.value), 0);
@@ -369,7 +388,7 @@ export default function MockAIChat({ company = false }) {
   return (
     <main className="min-h-screen bg-slate-50 px-4 py-6 text-slate-900 sm:px-6 lg:py-10">
       <div className="mx-auto max-w-5xl">
-        <section className="relative flex min-h-[calc(100vh-3rem)] flex-1 flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-[0_24px_70px_-32px_rgba(15,23,42,0.35)] lg:min-h-180">
+        <section className="relative flex h-[calc(100vh-3rem)] min-h-0 flex-1 flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-[0_24px_70px_-32px_rgba(15,23,42,0.35)] lg:h-180">
         <header className="flex items-center justify-between border-b border-slate-200 px-5 py-4 sm:px-7">
           <div className="flex items-center gap-3">
             <div className="grid size-10 place-items-center rounded-xl bg-blue-600 font-bold text-white shadow-sm">
@@ -399,7 +418,7 @@ export default function MockAIChat({ company = false }) {
           </div>
         </header>
 
-        <div className="flex-1 overflow-y-auto bg-linear-to-b from-slate-50 to-white px-5 py-7 sm:px-10">
+        <div className="min-h-0 flex-1 overflow-y-auto bg-linear-to-b from-slate-50 to-white px-5 py-7 sm:px-10">
           <div className="mx-auto flex max-w-3xl flex-col gap-6">
             {messages.map((message) => {
               const isUser = message.role === "user";
@@ -414,7 +433,7 @@ export default function MockAIChat({ company = false }) {
                       {isUser ? "You" : "Nova AI"}
                     </p>
                     <div
-                      className={`rounded-2xl px-4 py-3 text-left text-sm leading-6 shadow-sm ${
+                      className={`rounded-2xl px-4 py-3 text-left text-sm leading-6 shadow-sm whitespace-pre-line ${
                         isUser
                           ? "rounded-tr-sm bg-blue-600 text-white"
                           : "rounded-tl-sm border border-slate-200 bg-white text-slate-700"
