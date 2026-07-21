@@ -3,8 +3,8 @@
 > **Making the safe path the easiest path.**  
 > An end-to-end governance ecosystem that eliminates "Shadow AI" risks by combining moment-of-use risk detection, automated prompt sanitization, synthetic data generation, and audit-ready admin insights.
 
-Prototype Link (Dashboard): https://shadowseek.vercel.app 
-Prototype Link (AI Chat Simulator): https://shadowseek.vercel.app/ai-chat  
+### Prototype Link (Dashboard): https://shadowseek.vercel.app 
+### Prototype Link (AI Chat Simulator): https://shadowseek.vercel.app/ai-chat  
 
 ---
 
