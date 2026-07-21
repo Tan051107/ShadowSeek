@@ -7,7 +7,7 @@
 
 ## 📌 Executive Summary
 
-As enterprise employees increasingly adopt Generative AI tools to boost productivity, compliance and security teams face a growing governance gap. Outright bans tend to push usage further out of sight, creating severe "Shadow AI" data leak exposures. 
+As enterprise employees increasingly adopt Generative AI tools to boost productivity, compliance and security teams face a growing governance gap—giving rise to the Shadow AI data leak problem.
 
 Our platform solves this challenge by shifting from rigid inline blocks to **willing compliance**. It equips employees with real-time risk alerts and automated remediation tools while providing C-suite executives with full visibility and control over enterprise AI risk.
 
